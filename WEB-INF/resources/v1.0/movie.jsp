@@ -15,7 +15,6 @@
  </c:when>
 
  <c:when test="${empty mtgReq.id and mtgReq.method eq 'POST'}">
- <mtg:upload/>
  <sql:update var="result" dataSource="jdbc/mtgDataSource"> insert into movie (name,rating) values (? ,? ) 
 <sql:param value="${mtgReq.params['name']}" />
 <sql:param value="${mtgReq.params['rating']}" />
