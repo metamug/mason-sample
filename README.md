@@ -6,11 +6,15 @@ The URL endpoint for the REST API created by each resource JSP is `/{webappDirec
 
 ### Example
 
-For example,the endpoint for the resource file *WEB_INF/resources/v1.0/movies.jsp* shall be `/{webappDirectoryName}/v1.0/movies`.
+For example,the endpoint for the resource file *WEB_INF/resources/v1.0/movie.jsp* shall be `/{webappDirectoryName}/v1.0/movie`.
 Assuming you deploy this webapp on tomcat you can access the JSP at 
 
 ```
-http://localhost:8080/mason-sample/v1.0/movies
+http://localhost:8080/mason-sample/v1.0/movie
 ```
 
 You can create more resources in the same manner.
+
+### Database Connection
+
+You can find the database connection in context.xml file. You can checkout [Tomcat's guide on DBCP configuration with MySQL or other databases.](https://tomcat.apache.org/tomcat-9.0-doc/jndi-datasource-examples-howto.html#MySQL_DBCP_2_Example)
