@@ -17,4 +17,5 @@ You can create more resources in the same manner.
 
 ### Database Connection
 
-You can find the database connection in context.xml file. You can checkout [Tomcat's guide on DBCP configuration with MySQL or other databases.](https://tomcat.apache.org/tomcat-9.0-doc/jndi-datasource-examples-howto.html#MySQL_DBCP_2_Example)
+You can find the database connection in `META-INF/context.xml` file. This project uses <a href="https://github.com/brettwooldridge/HikariCP" target="_blank">HikariCP</a>.
+You can checkout [Tomcat's guide on DBCP configuration with MySQL or other databases.](https://tomcat.apache.org/tomcat-9.0-doc/jndi-datasource-examples-howto.html#MySQL_DBCP_2_Example)
