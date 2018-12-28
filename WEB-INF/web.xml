@@ -6,7 +6,7 @@
     </welcome-file-list>
     <filter>
         <filter-name>RestRouterFilter</filter-name>
-        <filter-class>com.metamug.api.filters.RestRouterFilter</filter-class>
+        <filter-class>com.metamug.mason.filters.RestRouterFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>RestRouterFilter</filter-name>
