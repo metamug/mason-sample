@@ -11,5 +11,9 @@
     <filter-mapping>
         <filter-name>RestRouterFilter</filter-name>
         <url-pattern>/*</url-pattern>
-    </filter-mapping>
+    </filter-mapping>    
+    <listener>
+        <description>MasonAppContextListener</description>
+        <listener-class>com.metamug.mason.listener.AppContextListener</listener-class>
+    </listener>
 </web-app>
