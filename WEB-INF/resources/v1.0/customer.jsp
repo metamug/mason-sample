@@ -7,7 +7,7 @@
 <mtg:header value="${header.accept}"/>
 <c:choose>
  <c:when test="${empty mtgReq.id and mtgReq.method eq 'GET'}">
- <sql:query var="result" dataSource="jdbc/mtgDataSource"> ${masonQuery['qry1']} 
+ <sql:query var="result" dataSource="jdbc/mtgDataSource"> ${masonQuery.qry1} 
 </sql:query>
  <c:set target="${requestScope.map}" property="d0" value="${result}"/>
  <mtg:out value="${map}" type="${header.accept}" tableName="customer"/>
