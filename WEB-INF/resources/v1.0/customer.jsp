@@ -4,13 +4,12 @@
 <%@taglib uri="mtg-mason.tld" prefix="mtg" %>
 
 <jsp:useBean id="outputMap" class="java.util.LinkedHashMap" scope="request"/>
-<mtg:header value="${header.accept}"/>
 <c:choose>
  <c:when test="${empty mtgReq.id and mtgReq.method eq 'GET'}">
  <sql:query var="result" dataSource="jdbc/mtgDataSource"> ${masonQuery.qry1} 
 </sql:query>
  <c:set target="${requestScope.outputMap}" property="d0" value="${result}"/>
- <mtg:out value="${requestScope.outputMap}" type="${header.accept}" tableName="customer"/>
+ <mtg:out value="${requestScope.outputMap}" tableName="customer"/>
  </c:when>
 
  <c:when test="${not empty mtgReq.id and mtgReq.method eq 'GET'}">
