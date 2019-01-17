@@ -6,7 +6,13 @@
  <sql:query var="result" dataSource="jdbc/mtgDataSource"> SELECT * from customer 
 </sql:query>
  <c:set target="${requestScope.map}" property="d0" value="${result}"/>
- <mtg:out value="${map}" tableName="customer"/>
+ <sql:query var="result" dataSource="jdbc/mtgDataSource"> SELECT * from customer 
+</sql:query>
+ <c:set target="${requestScope.map}" property="d1" value="${result}"/>
+ <sql:query var="result" dataSource="jdbc/mtgDataSource"> SELECT * from customer 
+</sql:query>
+ <c:set target="${requestScope.map}" property="d2" value="${result}"/>
+ <mtg:out value="${map}" tableName="customers"/>
  </c:when>
 
  <c:when test="${not empty mtgReq.id and mtgReq.method eq 'GET'}">
