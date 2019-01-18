@@ -4,14 +4,13 @@
 <%@taglib uri="mtg-mason.tld" prefix="mtg" %>
 
 <jsp:useBean id="map" class="java.util.LinkedHashMap" scope="request"/>
-<mtg:header value="${header.accept}"/>
 
 <c:choose>
  <c:when test="${empty mtgReq.id and mtgReq.method eq 'GET'}">
  <sql:query var="result" dataSource="jdbc/mtgDataSource"> SELECT * FROM movie 
 </sql:query>
  <c:set target="${requestScope.map}" property="d0" value="${result}"/>
- <mtg:out value="${map}" type="${header.accept}" tableName="movie"/>
+ <mtg:out value="${map}" tableName="movie"/>
  </c:when>
 
  <c:when test="${empty mtgReq.id and mtgReq.method eq 'POST'}">
@@ -19,7 +18,7 @@
 <sql:param value="${mtgReq.params['name']}" />
 <sql:param value="${mtgReq.params['rating']}" />
 </sql:update>
- <mtg:out value="${map}" type="${header.accept}" tableName="movie"/>
+ <mtg:out value="${map}" tableName="movie"/>
  </c:when>
 
  <c:when test="${not empty mtgReq.id and mtgReq.method eq 'PUT'}">
@@ -27,7 +26,7 @@
 <sql:param value="${mtgReq.params['rating']}" />
 <sql:param value="${mtgReq.id}"/>
 </sql:update>
- <mtg:out value="${map}" type="${header.accept}" tableName="movie"/>
+ <mtg:out value="${map}" tableName="movie"/>
  </c:when>
 
  <c:when test="${not empty mtgReq.id and mtgReq.method eq 'DELETE'}">
@@ -35,7 +34,7 @@
 <sql:param value="${mtgReq.id}"/>
 </sql:update>
  <c:set target="${requestScope.map}" property="d1" value="${result}"/>
- <mtg:out value="${map}" type="${header.accept}" tableName="movie"/>
+ <mtg:out value="${map}" tableName="movie"/>
  </c:when>
 
  <c:when test="${not empty mtgReq.id and mtgReq.method eq 'GET'}">
