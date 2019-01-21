@@ -26,7 +26,7 @@
     </c:when>
 
     <c:otherwise>
-        <mtg:status value="405" message="Method not defined"/>
+        <m:status value="405" message="Method not defined"/>
     </c:otherwise>
  
 </c:choose>
