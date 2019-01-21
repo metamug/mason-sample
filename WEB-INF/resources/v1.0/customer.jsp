@@ -6,24 +6,24 @@
 <jsp:useBean id="map" class="java.util.LinkedHashMap" scope="request"/>
 
 <c:choose>
-    <c:when test="${empty mtgReq.id and mtgReq.method eq 'GET'}">
-        <sql:query var="result" dataSource="jdbc/mtgDataSource"> SELECT * from customer 
-        </sql:query>
-        
+    <c:when test="${mtgReq.method eq 'GET'}">
+        <c:choose>
+            <c:when test="${not empty mtgReq.id}">
+                <sql:query var="result" dataSource="jdbc/mtgDataSource"> SELECT * from customer where customer_id=? 
+                    <sql:param value="${mtgReq.id}"/>
+  	         </sql:query>	     
+            </c:when>    
+    
+	     <c:otherwise>
+	         <sql:query var="result" dataSource="jdbc/mtgDataSource"> SELECT * from customer 
+                </sql:query>
+	     </c:otherwise>
+        </c:choose>
+  
         <c:set target="${requestScope.map}" property="d0" value="${result}"/>
      
         <mtg:out value="${map}" tableName="customer"/>
     </c:when>
-
-    <c:when test="${not empty mtgReq.id and mtgReq.method eq 'GET'}">
-        <sql:query var="result" dataSource="jdbc/mtgDataSource"> SELECT * from customer where customer_id=? 
-            <sql:param value="${mtgReq.id}"/>
-        </sql:query>
-        
-        <c:set target="${requestScope.map}" property="d1" value="${result}"/>
-        
-        <mtg:out value="${map}" tableName="customer"/>
-     </c:when>
 
     <c:otherwise>
         <mtg:status value="405" message="Method not defined"/>
