@@ -1,7 +1,4 @@
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@taglib uri="mtg-mason.tld" prefix="mtg" %>
+<jsp:directive.include file="../../fragments/taglibs.jspf"/>
 
 <jsp:useBean id="map" class="java.util.LinkedHashMap" scope="request"/>
 
@@ -10,7 +7,7 @@
  <sql:query var="result" dataSource="jdbc/mtgDataSource"> SELECT * FROM movie 
 </sql:query>
  <c:set target="${requestScope.map}" property="d0" value="${result}"/>
- <mtg:out value="${map}" tableName="movie"/>
+ <m:out value="${map}" tableName="movie"/>
  </c:when>
 
  <c:when test="${empty mtgReq.id and mtgReq.method eq 'POST'}">
@@ -18,7 +15,7 @@
 <sql:param value="${mtgReq.params['name']}" />
 <sql:param value="${mtgReq.params['rating']}" />
 </sql:update>
- <mtg:out value="${map}" tableName="movie"/>
+ <m:out value="${map}" tableName="movie"/>
  </c:when>
 
  <c:when test="${not empty mtgReq.id and mtgReq.method eq 'PUT'}">
@@ -26,7 +23,7 @@
 <sql:param value="${mtgReq.params['rating']}" />
 <sql:param value="${mtgReq.id}"/>
 </sql:update>
- <mtg:out value="${map}" tableName="movie"/>
+ <m:out value="${map}" tableName="movie"/>
  </c:when>
 
  <c:when test="${not empty mtgReq.id and mtgReq.method eq 'DELETE'}">
@@ -34,27 +31,27 @@
 <sql:param value="${mtgReq.id}"/>
 </sql:update>
  <c:set target="${requestScope.map}" property="d1" value="${result}"/>
- <mtg:out value="${map}" tableName="movie"/>
+ <m:out value="${map}" tableName="movie"/>
  </c:when>
 
  <c:when test="${not empty mtgReq.id and mtgReq.method eq 'GET'}">
- <mtg:status value="404" message="Resource not found."/>
+ <m:status value="404" message="Resource not found."/>
  </c:when>
 
  <c:when test="${not empty mtgReq.id and mtgReq.method eq 'POST'}">
- <mtg:status value="404" message="Resource not found."/>
+ <m:status value="404" message="Resource not found."/>
  </c:when>
 
  <c:when test="${empty mtgReq.id and mtgReq.method eq 'PUT'}">
- <mtg:status value="404" message="Resource not found."/>
+ <m:status value="404" message="Resource not found."/>
  </c:when>
 
  <c:when test="${empty mtgReq.id and mtgReq.method eq 'DELETE'}">
- <mtg:status value="404" message="Resource not found."/>
+ <m:status value="404" message="Resource not found."/>
  </c:when>
 
  <c:otherwise>
- <mtg:status value="405" message="Method not defined"/>
+ <m:status value="405" message="Method not defined"/>
  </c:otherwise>
 
 </c:choose>
