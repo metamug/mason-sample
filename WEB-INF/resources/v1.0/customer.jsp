@@ -1,7 +1,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@taglib uri="mtg-mason.tld" prefix="mtg" %>
+<%@taglib uri="mtg-mason.tld" prefix="m" %>
+<%@ page trimDirectiveWhitespaces="true" %>
 
 <jsp:useBean id="map" class="java.util.LinkedHashMap" scope="request"/>
 
@@ -22,7 +22,7 @@
   
         <c:set target="${requestScope.map}" property="d0" value="${result}"/>
      
-        <mtg:out value="${map}" tableName="customer"/>
+        <m:out value="${map}" tableName="customer"/>
     </c:when>
 
     <c:otherwise>
