@@ -7,10 +7,10 @@ The URL endpoint for the REST API created by each resource JSP is `/{webappDirec
 ### Example
 
 For example, the endpoint for the resource file *WEB_INF/resources/v1.0/customer.jsp* shall be `/{webappDirectoryName}/v1.0/customer`.
-Assuming you deploy this webapp on [Tomcat](http://tomcat.apache.org/), you can access the JSP at 
+Assuming you deploy this webapp on [Tomcat](http://tomcat.apache.org/), you can make API request at 
 
 ```
-http://localhost:8080/mason-sample/v1.0/movie
+http://localhost:8080/mason-sample/v1.0/customer
 ```
 
 You can create more resources in the same manner.
