@@ -6,7 +6,7 @@
     </welcome-file-list>
     <filter>
         <filter-name>Router</filter-name>
-        <filter-class>com.metamug.mason.filters.Router</filter-class>
+        <filter-class>com.metamug.mason.Router</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>Router</filter-name>
