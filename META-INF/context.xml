@@ -14,7 +14,7 @@
              maxLifetime="1800000"
              maximumPoolSize="2"
              minimumIdle="1"
-             name="jdbc/mtgDataSource"
+             name="jdbc/mason"
              password="tiger123"
              poolName="masonSamplePool"
              type="javax.sql.DataSource"
