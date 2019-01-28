@@ -5,7 +5,7 @@
        <c:set target="${masonOutput}" value="${result}"/> <!-- Mason output object is implicit here -->
     </m:request>
     <m:request method="GET" item="true">
-        <sql:query var="result" dataSource="jdbc/mason"> 
+        <sql:query var="result" dataSource="${datasource}"> 
               SELECT * from customer where customer_id=?
         <sql:param value="${mtgReq.id}"/>
         </sql:query>

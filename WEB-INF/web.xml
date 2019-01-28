@@ -7,6 +7,10 @@
     <filter>
         <filter-name>Router</filter-name>
         <filter-class>com.metamug.mason.Router</filter-class>
+        <init-param>
+            <param-name>datasource</param-name>
+            <param-value>jdbc/mason</param-value>
+        </init-param>
     </filter>
     <filter-mapping>
         <filter-name>Router</filter-name>

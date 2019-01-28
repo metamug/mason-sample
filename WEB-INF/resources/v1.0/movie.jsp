@@ -3,7 +3,7 @@
 
 <c:choose>
  <c:when test="${empty mtgReq.id and mtgReq.method eq 'GET'}">
- <sql:query var="result" dataSource="jdbc/mason">SELECT * FROM movie
+ <sql:query var="result" dataSource="${datasource}">SELECT * FROM movie
 </sql:query>
  <c:set target="${requestScope.map}" property="d0" value="${result}"/>
  <m:out value="${map}" tableName="movie"/>
@@ -11,13 +11,13 @@
 
  <c:when test="${empty mtgReq.id and mtgReq.method eq 'POST'}">
  <m:upload/>
- <sql:update var="result" dataSource="jdbc/mason">INSERT INTO movie (name,rating) values ('test',1.0);
+ <sql:update var="result" dataSource="${datasource}">INSERT INTO movie (name,rating) values ('test',1.0);
 </sql:update>
  <m:out value="${map}" tableName="movie"/>
  </c:when>
 
  <c:when test="${empty mtgReq.id and mtgReq.method eq 'DELETE'}">
- <sql:update var="result" dataSource="jdbc/mason">TRUNCATE TABLE movie
+ <sql:update var="result" dataSource="${datasource}">TRUNCATE TABLE movie
 </sql:update>
  <m:out value="${map}" tableName="movie"/>
  </c:when>
