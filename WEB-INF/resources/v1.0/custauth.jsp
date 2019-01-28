@@ -6,9 +6,9 @@
 
 <c:choose>
     <c:when test="${empty mtgReq.id and mtgReq.method eq 'GET'}">
-        <sql:query var="result" dataSource="jdbc/mtgDataSource"> SELECT * from customer 
+        <sql:query var="result" dataSource="jdbc/mason"> SELECT * from customer 
         </sql:query>
-        
+
         <c:set target="${requestScope.map}" property="d0" value="${result}"/>
         <m:out value="${map}" tableName="custauth"/>
     </c:when>

@@ -5,13 +5,13 @@
     <c:when test="${mtgReq.method eq 'GET'}">
         <c:choose>
             <c:when test="${not empty mtgReq.id}">
-                <sql:query var="result" dataSource="jdbc/mtgDataSource"> SELECT * from customer where customer_id=?
+                <sql:query var="result" dataSource="jdbc/mason"> SELECT * from customer where customer_id=?
                     <sql:param value="${mtgReq.id}"/>
   	         </sql:query>
             </c:when>
 
 	     <c:otherwise>
-	         <sql:query var="result" dataSource="jdbc/mtgDataSource"> ${masonQuery['qry1']}
+	         <sql:query var="result" dataSource="jdbc/mason"> ${masonQuery['qry1']}
                 </sql:query>
 	     </c:otherwise>
         </c:choose>
