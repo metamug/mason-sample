@@ -1,7 +1,7 @@
 <jsp:directive.include file="../../fragments/taglibs.jspf"/>
 <m:resource>
     <m:request method="GET">
-       <sql:query var="result" dataSource="jdbc/mason"> SELECT * from customer </sql:query>
+       <sql:query var="result" dataSource="${datasource}"> SELECT * from customer </sql:query>
        <c:set target="${masonOutput}" value="${result}"/> <!-- Mason output object is implicit here -->
     </m:request>
     <m:request method="GET" item="true">
