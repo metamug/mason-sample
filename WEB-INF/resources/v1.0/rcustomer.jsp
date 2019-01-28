@@ -5,6 +5,7 @@
     <m:request method="GET">
        <sql:query var="result" dataSource="${datasource}"> SELECT * from customer </sql:query>
        <c:set target="${map}" property="getReq1" value="${result}"/>
+
     </m:request>
     <m:request method="GET" item="true">
         <sql:query var="result" dataSource="${datasource}">
