@@ -2,22 +2,16 @@
 
 <jsp:useBean id="map" class="java.util.LinkedHashMap" scope="request"/>
 
-<m:group value="supplier"/>
+<m:resource auth="supplier">
 
-<c:choose>
-    <c:when test="${empty mtgReq.id and mtgReq.method eq 'GET'}">
+
+    <m:request method="GET">
         <sql:query var="result" dataSource="${datasource}"> SELECT * from customer 
         </sql:query>
 
         <c:set target="${requestScope.map}" property="d0" value="${result}"/>
-        <m:out value="${map}" tableName="custauth"/>
-    </c:when>
+        
+    </m:request>
 
-    <c:when test="${not empty mtgReq.id and mtgReq.method eq 'GET'}">
-        <m:status value="404" message="Resource not found."/>
-    </c:when>
-
-    <c:otherwise>
-        <m:status value="405" message="Method not defined"/>
-    </c:otherwise>
-</c:choose>
+        
+</m:resource>

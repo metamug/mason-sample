@@ -1,28 +1,17 @@
 <jsp:directive.include file="../../fragments/taglibs.jspf"/>
+
 <jsp:useBean id="map" class="java.util.LinkedHashMap" scope="request"/>
+<m:resource auth="supplier">
+    <m:request method="GET">
+       <sql:query var="result" dataSource="${datasource}"> SELECT * from customer </sql:query>
+       <c:set target="${map}" property="getReq1" value="${result}"/>
 
-<c:choose>
-    <c:when test="${mtgReq.method eq 'GET'}">
-        <c:choose>
-            <c:when test="${not empty mtgReq.id}">
-                <sql:query var="result" dataSource="${datasource}"> SELECT * from customer where customer_id=?
-                    <sql:param value="${mtgReq.id}"/>
-  	         </sql:query>
-            </c:when>
-
-	     <c:otherwise>
-	         <sql:query var="result" dataSource="${datasource}"> ${masonQuery['qry1']}
-                </sql:query>
-	     </c:otherwise>
-        </c:choose>
-
-        <c:set target="${requestScope.map}" property="d0" value="${result}"/>
-
-        <m:out value="${map}" tableName="customer"/>
-    </c:when>
-
-    <c:otherwise>
-        <m:status value="405" message="Method not defined"/>
-    </c:otherwise>
-
-</c:choose>
+    </m:request>
+    <m:request method="GET" item="true">
+        <sql:query var="result" dataSource="${datasource}">
+              SELECT * from customer where customer_id=?
+        <sql:param value="${mtgReq.id}"/>
+        </sql:query>
+       <c:set target="${map}" property="getReq2"  value="${result}"/>
+    </m:request>
+</m:resource>
