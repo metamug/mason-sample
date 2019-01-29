@@ -1,4 +1,4 @@
-<jsp:directive.include file="../../fragments/taglibs.jspf"/>
+<jsp:directive.include file="../fragments/mason-init.jspf"/>
 
 <m:resource auth="supplier">
     <m:request method="GET">
