@@ -1,40 +1,30 @@
 <jsp:directive.include file="../../fragments/taglibs.jspf"/>
-<jsp:useBean id="map" class="java.util.LinkedHashMap" scope="request"/>
 
-<c:choose>
- <c:when test="${empty mtgReq.id and mtgReq.method eq 'GET'}">
- <sql:query var="result" dataSource="${datasource}">SELECT * FROM movie
-</sql:query>
- <c:set target="${requestScope.map}" property="d0" value="${result}"/>
- <m:out value="${map}" tableName="movie"/>
- </c:when>
+<m:resource>
 
- <c:when test="${empty mtgReq.id and mtgReq.method eq 'POST'}">
- <m:upload/>
- <sql:update var="result" dataSource="${datasource}">INSERT INTO movie (name,rating) values ('test',1.0);
-</sql:update>
- <m:out value="${map}" tableName="movie"/>
- </c:when>
+    <m:request method="GET">
+       <sql:query var="result" dataSource="${datasource}">SELECT * FROM movie
+       </sql:query>
+       <c:set target="${masonOutput}" property="getResult" value="${result}"/>
+    </m:request>
 
- <c:when test="${empty mtgReq.id and mtgReq.method eq 'DELETE'}">
- <sql:update var="result" dataSource="${datasource}">TRUNCATE TABLE movie
-</sql:update>
- <m:out value="${map}" tableName="movie"/>
- </c:when>
+    <m:request method='POST'>
+       <sql:update var="result" dataSource="${datasource}">
+            INSERT INTO movie (name,rating) values (?,?);
 
- <c:when test="${not empty mtgReq.id and mtgReq.method eq 'GET'}">
- <m:status value="404" message="Resource not found."/>
- </c:when>
+            <sql:param value="${mtgReq.params['name']}"/>
+            <sql:param value="${mtgReq.params['rating']}"/>
+       </sql:update>
+       <c:set target="${masonOutput}" property="postResult" value="${result}"/>
+    </m:request>
 
- <c:when test="${not empty mtgReq.id and mtgReq.method eq 'POST'}">
- <m:status value="404" message="Resource not found."/>
- </c:when>
+    <m:request method='DELETE' item="true">
+        <sql:update var="result" dataSource="${datasource}">
+            DELETE FROM movie WHERE id=?
 
- <c:when test="${not empty mtgReq.id and mtgReq.method eq 'DELETE'}">
- <m:status value="404" message="Resource not found."/>
- </c:when>
+            <sql:param value="${mtgReq.id}"/>
+        </sql:update>
+        <c:set target="${masonOutput}" property="deleteResult" value="${result}"/>
+    </m:request>
 
- <c:otherwise>
- <m:status value="405" message="Method not defined"/>
- </c:otherwise>
-</c:choose>
+</m:resource>
