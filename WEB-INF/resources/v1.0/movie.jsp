@@ -10,10 +10,20 @@
 
     <m:request method='POST'>
        <sql:update var="result" dataSource="${datasource}">
-            INSERT INTO movie (name,rating) values (?,?);
+            INSERT INTO movie (name,rating) values (?,?)
 
             <sql:param value="${mtgReq.params['name']}"/>
             <sql:param value="${mtgReq.params['rating']}"/>
+       </sql:update>
+       <c:set target="${masonOutput}" property="postResult" value="${result}"/>
+    </m:request>
+
+    <m:request method='PUT' item="true">
+       <sql:update var="result" dataSource="${datasource}">
+            UPDATE movie SET rating=? where id=?
+
+            <sql:param value="${mtgReq.params['rating']}"/>
+            <sql:param value="${mtgReq.id}"/>
        </sql:update>
        <c:set target="${masonOutput}" property="postResult" value="${result}"/>
     </m:request>
