@@ -25,7 +25,7 @@
             <sql:param value="${mtgReq.params['rating']}"/>
             <sql:param value="${mtgReq.id}"/>
        </sql:update>
-       <c:set target="${masonOutput}" property="postResult" value="${result}"/>
+       <c:set target="${masonOutput}" property="putResult" value="${result}"/>
     </m:request>
 
     <m:request method='DELETE' item="true">
