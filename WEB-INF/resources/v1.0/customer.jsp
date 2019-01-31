@@ -1,6 +1,6 @@
 <jsp:directive.include file="../fragments/mason-init.jspf"/>
 
-<m:resource auth="supplier">
+<m:resource>
     <m:request method="GET">
        <sql:query var="result" dataSource="${datasource}"> SELECT * from customer </sql:query>
        <c:set target="${masonOutput}" property="getReq1" value="${result}"/>
