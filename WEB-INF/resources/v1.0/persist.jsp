@@ -11,7 +11,7 @@
 
             <sql:param value="${mtgReq.id}"/>
         </sql:query>
-        <c:set target="${mtgPersist}" property="query1" value="${result}"/>
+        <m:convert property="query1" target="${mtgPersist}" result="${result}" />
 
         <sql:query var="result" dataSource="${datasource}">
             SELECT ? AS 'resultName'
