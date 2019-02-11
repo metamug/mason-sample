@@ -3,6 +3,13 @@
 <jsp:useBean id="mtgPersist" class="java.util.LinkedHashMap" scope="request"/>
 
 <m:resource>
+    
+    <m:request method="GET">
+        <m:xrequest var="testXReq" url="https://jsonplaceholder.typicode.com/todos/1"
+                  method="GET" >
+        </m:xrequest>
+        <c:set target="${masonOutput}" property="getResult" value="${testXReq}"/>
+    </m:request>
 
     <m:request method="GET" item="true">
 
