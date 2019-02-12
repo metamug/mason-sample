@@ -8,9 +8,15 @@
         <m:xrequest var="testXReq" url="https://jsonplaceholder.typicode.com/todos/1"
                   method="GET" >
         </m:xrequest>
+        
+        <m:convert target="${mtgPersist}" property="xreq" result="${testXReq}" />
        
-
-        <c:set target="${masonOutput}" property="getResult" value="${testXReq}"/>
+        <sql:query var="result" dataSource="${datasource}">
+            SELECT ? AS 'resultName'
+            <sql:param value="${mtgPersist['xreq.body.title']}"/>
+        </sql:query>
+            
+        <c:set target="${masonOutput}" property="getResult" value="${result}"/>
     </m:request>
 
     <m:request method="GET" item="true">
