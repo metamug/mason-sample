@@ -36,5 +36,24 @@
         <c:set target="${masonOutput}" property="getResult" value="${result}"/>
 
     </m:request>
+            
+    <m:request method="POST">
+        <sql:query var="result" dataSource="${datasource}">
+            SELECT * from customer WHERE customer_id=?
+
+            <sql:param value="${mtgReq.params['customer_id']}"/>
+        </sql:query>
+        <m:convert target="${mtgPersist}" property="query1" result="${result}" />
+	<m:xrequest var="xreq" url="https://postman-echo.com/post" method="POST" >
+            <m:xheader name="Content-Type" value="application/json"/>
+            <m:xbody>
+                {
+                    "foo1": ${mtgPersist['query1.customer_id']},
+                    "foo2": "${mtgPersist['query1.customer_name']}"
+                }
+            </m:xbody>
+    	</m:xrequest>
+	<c:set target="${masonOutput}" property="xreqvalue" value="${xreq}"/>
+    </m:request>
 
 </m:resource>
