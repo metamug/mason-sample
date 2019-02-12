@@ -8,6 +8,8 @@
         <m:xrequest var="testXReq" url="https://jsonplaceholder.typicode.com/todos/1"
                   method="GET" >
         </m:xrequest>
+       
+
         <c:set target="${masonOutput}" property="getResult" value="${testXReq}"/>
     </m:request>
 
@@ -18,11 +20,11 @@
 
             <sql:param value="${mtgReq.id}"/>
         </sql:query>
-        <m:convert target="${mtgPersist}" result="${result}" />
+        <m:convert target="${mtgPersist}" property="query1" result="${result}" />
 
         <sql:query var="result" dataSource="${datasource}">
             SELECT ? AS 'resultName'
-            <sql:param value="${mtgPersist['customer_name']}"/>
+            <sql:param value="${mtgPersist['query1.customer_name']}"/>
         </sql:query>
 
         <c:set target="${masonOutput}" property="getResult" value="${result}"/>

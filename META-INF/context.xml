@@ -10,15 +10,15 @@
              driverClassName="com.mysql.cj.jdbc.Driver"
              factory="com.zaxxer.hikari.HikariJNDIFactory"
              idleTimeout="120000"
-             jdbcUrl="jdbc:mysql://db4free.net:3306/testdbsql123?useOldAliasMetadataBehavior=true&amp;characterEncoding=UTF-8&amp;zeroDateTimeBehavior=CONVERT_TO_NULL&amp;characterSetResults=UTF-8&amp;allowMultiQueries=true&amp;connectTimeout=120000"
+             jdbcUrl="jdbc:mysql://localhost:3306/testdb?useOldAliasMetadataBehavior=true&amp;characterEncoding=UTF-8&amp;zeroDateTimeBehavior=CONVERT_TO_NULL&amp;characterSetResults=UTF-8&amp;allowMultiQueries=true&amp;connectTimeout=120000"
              maxLifetime="1800000"
              maximumPoolSize="2"
              minimumIdle="1"
              name="jdbc/mason"
-             password="tiger123"
+             password="123456"
              poolName="masonSamplePool"
              type="javax.sql.DataSource"
-             username="testdbsql123"/>
+             username="root"/>
 	  <JarScanner scanManifest="false"/>
     <WatchedResource>/WEB-INF/lib/</WatchedResource>
 </Context>
