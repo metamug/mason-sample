@@ -11,6 +11,9 @@
         
         <m:convert target="${mtgPersist}" property="xreq" result="${testXReq}" />
        
+        <m:execute className="com.metamug.plugin.ParamExample" var="execRes"
+                   param="${mtgReq}" persistParam="${mtgPersist}" />
+        
         <sql:query var="result" dataSource="${datasource}">
             SELECT ? AS 'resultName'
             <sql:param value="${mtgPersist['xreq.body.title']}"/>
@@ -26,6 +29,7 @@
 
             <sql:param value="${mtgReq.id}"/>
         </sql:query>
+            
         <m:convert target="${mtgPersist}" property="query1" result="${result}" />
 
         <sql:query var="result" dataSource="${datasource}">
