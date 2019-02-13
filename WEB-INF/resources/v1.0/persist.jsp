@@ -9,14 +9,17 @@
                   method="GET" >
         </m:xrequest>
         
-        <m:convert target="${mtgPersist}" property="xreq" result="${testXReq}" />
+        <m:convert target="${mtgPersist}" property="xreq" value="${testXReq}" />
        
-        <m:execute className="com.metamug.plugin.ParamExample" var="execRes"
-                   param="${mtgReq}" persistParam="${mtgPersist}" />
+        <m:execute className="com.metamug.plugin.RequestExample" var="execRes"
+                   param="${mtgReq}" persistParam="${mtgPersist}" />     
+        
+        <c:set target="${mtgPersist}" property="execres" value="${execRes}" />   
         
         <sql:query var="result" dataSource="${datasource}">
-            SELECT ? AS 'resultName'
+            SELECT ? AS 'xreqResult',? AS 'execr'
             <sql:param value="${mtgPersist['xreq.body.title']}"/>
+            <sql:param value="${mtgPersist['execres'].name}"/>
         </sql:query>
             
         <c:set target="${masonOutput}" property="getResult" value="${result}"/>
@@ -30,7 +33,7 @@
             <sql:param value="${mtgReq.id}"/>
         </sql:query>
             
-        <m:convert target="${mtgPersist}" property="query1" result="${result}" />
+        <m:convert target="${mtgPersist}" property="query1" value="${result}" />
 
         <sql:query var="result" dataSource="${datasource}">
             SELECT ? AS 'resultName'
@@ -47,7 +50,8 @@
 
             <sql:param value="${mtgReq.params['customer_id']}"/>
         </sql:query>
-        <m:convert target="${mtgPersist}" property="query1" result="${result}" />
+        <m:convert target="${mtgPersist}" property="query1" value="${result}" />
+        
 	<m:xrequest var="xreq" url="https://postman-echo.com/post" method="POST" >
             <m:xheader name="Content-Type" value="application/json"/>
             <m:xbody>
