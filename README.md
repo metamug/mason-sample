@@ -1,3 +1,7 @@
+### Deploy
+
+Download [tomcat](https://tomcat.apache.org/download-90.cgi) and place the folder `mason-sample` in the `/webapps` directory.
+
 Sample Java web application containing REST APIs developed using <a href="https://github.com/metamug/mason" target="_blank">Mason</a> REST API framework.
 
 The JSPs representing the REST resources can be found inside the `WEB_INF/resources` directory separated by folders representing the version string. 
