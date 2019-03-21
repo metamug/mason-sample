@@ -3,9 +3,18 @@
 <m:resource>
 
     <m:request method="GET">
-       <sql:query var="result" dataSource="${datasource}">SELECT * FROM movie
+       <sql:query var="result" dataSource="${datasource}">
+          SELECT * FROM movie
        </sql:query>
-       <c:set target="${masonOutput}" property="getResult" value="${result}"/>
+       <c:set target="${masonOutput}" property="output" value="${result}"/>
+    </m:request>
+
+     <m:request method="GET" item="true">
+        <sql:query var="result" dataSource="${datasource}">
+              SELECT * from movie where id= $id
+        <sql:param value="${mtgReq.id}"/>
+        </sql:query>
+        <c:set target="${masonOutput}" property="getReq2"  value="${result}"/>
     </m:request>
 
     <m:request method='POST'>
