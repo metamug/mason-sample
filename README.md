@@ -7,7 +7,7 @@ Download [tomcat](https://tomcat.apache.org/download-90.cgi) and place the folde
 Sample comes with MySQL Driver. You need a running mysql server on your localhost. Change the connection details, as per your mysql installation.
 
 ```xml
-<Resource auth="Container"
+ <Resource auth="Container"
              closeMethod="close"
              connectionTimeout="300000"
              dataSource.implicitCachingEnabled="true"
@@ -19,10 +19,11 @@ Sample comes with MySQL Driver. You need a running mysql server on your localhos
              maximumPoolSize="2"
              minimumIdle="1"
              name="jdbc/mason"
-             password="123456"
+             username="moviebuff"
+             password="password"
              poolName="masonSamplePool"
              type="javax.sql.DataSource"
-             username="root"/>
+             />
 ```
 
 Run the SQL Script to create the movie database.
@@ -39,7 +40,7 @@ For example, the endpoint for the resource file *WEB_INF/resources/v1.0/customer
 Assuming you deploy this webapp on [Tomcat](http://tomcat.apache.org/), you can make API request at 
 
 ```
-http://localhost:8080/mason-sample/v1.0/customer
+http://localhost:8080/mason-sample/v1.0/movie
 ```
 
 You can create more resources in the same manner.
