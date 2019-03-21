@@ -1,6 +1,31 @@
-### Deploy
+### Setup
 
 Download [tomcat](https://tomcat.apache.org/download-90.cgi) and place the folder `mason-sample` in the `/webapps` directory.
+
+#### MySQL
+
+Sample comes with MySQL Driver. You need a running mysql server on your localhost. Change the connection details, as per your mysql installation.
+
+```xml
+<Resource auth="Container"
+             closeMethod="close"
+             connectionTimeout="300000"
+             dataSource.implicitCachingEnabled="true"
+             driverClassName="com.mysql.cj.jdbc.Driver"
+             factory="com.zaxxer.hikari.HikariJNDIFactory"
+             idleTimeout="120000"
+             jdbcUrl="jdbc:mysql://localhost:3306/movieDB?useOldAliasMetadataBehavior=true&amp;characterEncoding=UTF-8&amp;zeroDateTimeBehavior=CONVERT_TO_NULL&amp;characterSetResults=UTF-8&amp;allowMultiQueries=true&amp;connectTimeout=120000"
+             maxLifetime="1800000"
+             maximumPoolSize="2"
+             minimumIdle="1"
+             name="jdbc/mason"
+             password="123456"
+             poolName="masonSamplePool"
+             type="javax.sql.DataSource"
+             username="root"/>
+```
+
+Run the SQL Script to create the movie database.
 
 Sample Java web application containing REST APIs developed using <a href="https://github.com/metamug/mason" target="_blank">Mason</a> REST API framework.
 
