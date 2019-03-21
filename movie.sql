@@ -1,11 +1,11 @@
 -- MySQL dump 10.16  Distrib 10.1.19-MariaDB, for Win32 (AMD64)
---
--- Host: api.metamug.com    Database: api.metamug.com
--- ------------------------------------------------------
--- Server version	5.6.33-0ubuntu0.14.04.1-log
---
+
 -- Table structure for table `movie`
 --
+create database movieDB;
+use movieDB;
+
+GRANT ALL PRIVILEGES ON movieDB.* TO 'moviebuff'@'localhost' IDENTIFIED BY 'password';
 
 DROP TABLE IF EXISTS `movie`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
