@@ -11,7 +11,7 @@
 
      <m:request method="GET" item="true">
         <sql:query var="result" dataSource="${datasource}">
-              SELECT * from movie where id= $id
+              SELECT * from movie where id=?
         <sql:param value="${mtgReq.id}"/>
         </sql:query>
         <c:set target="${masonOutput}" property="getReq2"  value="${result}"/>
