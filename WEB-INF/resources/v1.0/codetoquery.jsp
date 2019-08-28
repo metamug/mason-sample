@@ -6,11 +6,10 @@
         <m:execute className="com.metamug.plugin.RequestExample" var="execRes" param="${mtgReq}"/>
 
         <sql:query var="result" dataSource="${datasource}">
-            SELECT * from customer WHERE customer_id=?
-
-            <sql:param value="${execRes.id}"/>
+              SELECT ? AS name
+            <sql:param value="${bus['execRes'].name}"/>
         </sql:query>
-        <c:set target="${masonOutput}" property="getResult" value="${result}" />
+        <c:set target="${output}" property="getResult" value="${result}" />
     </m:request>
 
 </m:resource>
