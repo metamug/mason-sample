@@ -1,7 +1,5 @@
 <jsp:directive.include file="../fragments/mason-init.jspf"/>
 
-<jsp:useBean id="mtgPersist" class="java.util.LinkedHashMap" scope="request"/>
-
 <m:resource>
 
     <m:request method="POST">
