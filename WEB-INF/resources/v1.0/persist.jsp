@@ -45,25 +45,26 @@
         <c:set target="${masonOutput}" property="getResult" value="${result}"/>
 
     </m:request>
-<%--
+
     <m:request method="POST">
         <sql:query var="result" dataSource="${datasource}">
-            SELECT * from customer WHERE customer_id=?
+            SELECT * from movie WHERE id=?
 
-            <sql:param value="${mtgReq.params['customer_id']}"/>
+            <sql:param value="${mtgReq.params['movie_id']}"/>
         </sql:query>
-        <m:convert target="${mtgPersist}" property="query1" value="${result}" />
+        <c:set target="${MASON_BUS}" property="movie" value="${result}"/>
 
-	       <m:xrequest var="xreq" url="https://postman-echo.com/post" method="POST" >
-            <m:xheader name="Content-Type" value="application/json"/>
+        <m:extract path="$[movie][0].name" />
+        <m:extract path="$[movie][0].rating" />
+	       <m:xrequest output="true" var="xreq" url="https://postman-echo.com/post" method="POST" >
+            <m:header name="Content-Type" value="application/json"/>
             <m:xbody>
                 {
-                    "foo1": ${mtgPersist['query1.customer_id']},
-                    "foo2": "${mtgPersist['query1.customer_name']}"
+                    "foo1": ${extracted['[movie][0].name']},
+                    "foo2": ${extracted['[movie][0].rating']}"
                 }
             </m:xbody>
     	</m:xrequest>
-	     <c:set target="${masonOutput}" property="xreqvalue" value="${xreq}"/>
-    </m:request>--%>
+    </m:request>
 
 </m:resource>
