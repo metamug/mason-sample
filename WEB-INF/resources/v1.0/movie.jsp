@@ -6,7 +6,7 @@
        <sql:query var="result" dataSource="${datasource}">
           SELECT * FROM movie
        </sql:query>
-       <c:set target="${masonOutput}" property="output" value="${result}"/>
+       <c:set target="${output}" property="output" value="${result}"/>
     </m:request>
 
      <m:request method="GET" item="true">
@@ -14,7 +14,7 @@
               SELECT * from movie where id=?
         <sql:param value="${mtgReq.id}"/>
         </sql:query>
-        <c:set target="${masonOutput}" property="getReq2"  value="${result}"/>
+        <c:set target="${output}" property="getReq2"  value="${result}"/>
     </m:request>
 
     <m:request method='POST'>
@@ -24,7 +24,7 @@
             <sql:param value="${mtgReq.params['name']}"/>
             <sql:param value="${mtgReq.params['rating']}"/>
        </sql:update>
-       <c:set target="${masonOutput}" property="postResult" value="${result}"/>
+       <c:set target="${output}" property="postResult" value="${result}"/>
     </m:request>
 
     <m:request method='PUT' item="true">
@@ -34,7 +34,7 @@
             <sql:param value="${mtgReq.params['rating']}"/>
             <sql:param value="${mtgReq.id}"/>
        </sql:update>
-       <c:set target="${masonOutput}" property="putResult" value="${result}"/>
+       <c:set target="${output}" property="putResult" value="${result}"/>
     </m:request>
 
     <m:request method='DELETE' item="true">
@@ -43,7 +43,7 @@
 
             <sql:param value="${mtgReq.id}"/>
         </sql:update>
-        <c:set target="${masonOutput}" property="deleteResult" value="${result}"/>
+        <c:set target="${output}" property="deleteResult" value="${result}"/>
     </m:request>
 
 </m:resource>
