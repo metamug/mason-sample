@@ -7,7 +7,7 @@
             SELECT * from customer
         </sql:query>
         <m:execute className="com.metamug.plugin.ResultExample" var="execRes" param="${result}"/>
-        <c:set target="${masonOutput}" property="getReq1" value="${execRes}" />
+        <c:set target="${output}" property="getReq1" value="${execRes}" />
     </m:request>
 
 </m:resource>
