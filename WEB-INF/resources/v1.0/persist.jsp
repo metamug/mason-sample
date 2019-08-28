@@ -54,14 +54,14 @@
         </sql:query>
         <c:set target="${MASON_BUS}" property="movie" value="${result}"/>
 
-        <m:extract path="$[movie][0].name" />
-        <m:extract path="$[movie][0].rating" />
+        <m:extract var="foo1" path="$[movie][0].name" />
+        <m:extract path="$[movie][0].rating" var="foo2" />
 	       <m:xrequest output="true" var="xreq" url="https://postman-echo.com/post" method="POST" >
             <m:header name="Content-Type" value="application/json"/>
             <m:xbody>
                 {
-                    "foo1": ${extracted['[movie][0].name']},
-                    "foo2": ${extracted['[movie][0].rating']}"
+                    "foo1": ${extracted['foo1']},
+                    "foo2": ${extracted['foo2']}"
                 }
             </m:xbody>
     	</m:xrequest>
