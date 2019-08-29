@@ -7,12 +7,9 @@
             <m:header name="Accept" value="application/json" />
         </m:xrequest>
 
-
-        <m:extract path="$[xreq].body.args.foo1" />
-
         <sql:query var="result" dataSource="${datasource}">
             SELECT ? AS 'foo1'
-            <sql:param value="${extract['[xreq].body.args.foo1']}"/>
+            <sql:param value="${m:extractFromJson('$[xreq].body.args.foo1',bus['xreq'])}"/>
         </sql:query>
 
         <c:set target="${output}" property="qryResult" value="${result}"/>
