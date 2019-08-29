@@ -6,13 +6,8 @@
                           method="GET" >
             <m:header name="Accept" value="application/json" />
         </m:xrequest>
-
-
-        <m:extract path="$[xreq].body.args.foo1" />
-
         <m:execute className="com.metamug.plugin.ExtractExample" var="execRes" param="${mtgReq}" output="true">
-    		    <m:arg name="foo1" value="${extract['[xreq].body.args.foo1']}" />
-
+    		    <m:arg name="foo1" value="${m:jsonPath('$.body.args.foo1',bus['xreq'])}" />
     	  </m:execute>
 
     </m:request>
