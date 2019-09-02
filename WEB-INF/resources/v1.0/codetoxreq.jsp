@@ -10,7 +10,7 @@
            <m:xbody>
                {
                    "foo1": "Hello",
-                   "foo2": ${bus['execRes'].name}"
+                   "foo2": ${execRes.name}"
                }
            </m:xbody>
         </m:xrequest>

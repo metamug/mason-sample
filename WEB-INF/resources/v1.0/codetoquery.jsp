@@ -7,7 +7,7 @@
 
         <sql:query var="result" dataSource="${datasource}">
               SELECT ? AS name
-            <sql:param value="${bus['execRes'].name}"/>
+            <sql:param value="${execRes.name}"/>
         </sql:query>
         <c:set target="${output}" property="getResult" value="${result}" />
     </m:request>
