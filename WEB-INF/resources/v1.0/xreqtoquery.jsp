@@ -9,7 +9,7 @@
 
         <sql:query var="result" dataSource="${datasource}">
             SELECT ? AS 'foo1'
-            <sql:param value="${m:jsonPath('$.body.args.foo1', xreq)}" />
+            <sql:param value="${m:jsonPath('$.args.foo1', xreq)}" />
         </sql:query>
 
         <c:set target="${output}" property="qryResult" value="${result}"/>
