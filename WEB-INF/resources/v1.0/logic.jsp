@@ -3,6 +3,6 @@
 <m:resource>
     <m:request method="GET">
         <m:script file="test.groovy" var="res" />
-        <c:set target="${masonOutput}" property="response" value="${res}"/>
+        <c:set target="${output}" property="response" value="${res}"/>
     </m:request>
 </m:resource>
