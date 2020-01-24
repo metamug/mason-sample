@@ -7,4 +7,4 @@
 //def response = [:];
 def params = _request.getParams();
 
-scriptOut['message'] = 'Hello ' +  _context.getAttribute('q');
+scriptOut['message'] = 'Hello ' +  _context.getAttribute('q').rows[2].name;
