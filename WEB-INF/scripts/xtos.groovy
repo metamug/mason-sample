@@ -7,4 +7,4 @@
 //def response = [:];
 def params = _request.getParams();
 
-scriptOut['message'] = 'Hello ' + _context.getAttribute('xreq').getJSONObject('args').getString('foo2');
+res['message'] = 'Hello ' + _context.getAttribute('xreq').getJSONObject('args').getString('foo2');
