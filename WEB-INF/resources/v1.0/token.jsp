@@ -7,17 +7,17 @@
 
     <m:request method="POST" >
        <sql:query var="authQuery" dataSource="${datasource}" >
-            SELECT r.user_id AS sub, r.role_name AS aud
+            SELECT CONCAT(r.user_id,'') AS sub, r.role_name AS aud
             FROM usr_role r INNER JOIN usr u ON r.user_id=u.user_id
             WHERE u.user_name=? AND u.pass_word= ?
             <sql:param value="${mtgReq.params['user']}"/>
             <sql:param value="${mtgReq.params['pass']}"/>
        </sql:query>
-       <m:execute className="com.metamug.mason.plugin.TokenGenerator" var="execRes" param="${mtgReq}">
-         <m:xparam name="aud" value="${authQuery.rows[0].aud}" />
-         <m:xparam name="sub" value="${authQuery.rows[0].sub}" />
+       <m:execute className="com.metamug.mason.plugin.TokenGenerator" var="token" param="${mtgReq}" output="true">
+         <m:arg name="aud" value="${authQuery.rows[0].aud}" />
+         <m:arg name="sub" value="${authQuery.rows[0].sub}" />
        </m:execute>
-       <c:set target="${output}" property="getResult" value="${execRes}" />
+      
     </m:request>
 
 </m:resource>
